@@ -31,6 +31,93 @@ public class Cliente {
     private Binary dpi_pdf;
     private String password;
     
+    //constructor para el ingrese del archivo xml
+
+    public Cliente(int codigo, String nombre, String birth, String dpi, String direccion, String genero, Binary dpi_pdf, String password) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.birth = birth;
+        this.dpi = dpi;
+        this.direccion = direccion;
+        this.genero = genero;
+        this.dpi_pdf = dpi_pdf;
+        this.password = password;
+    }
+
+    public Cliente(String nombre, String birth, String dpi, String direccion, String genero, Binary dpi_pdf, String password) {
+        this.nombre = nombre;
+        this.birth = birth;
+        this.dpi = dpi;
+        this.direccion = direccion;
+        this.genero = genero;
+        this.dpi_pdf = dpi_pdf;
+        this.password = password;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getBirth() {
+        return birth;
+    }
+
+    public void setBirth(String birth) {
+        this.birth = birth;
+    }
+
+    public String getDpi() {
+        return dpi;
+    }
+
+    public void setDpi(String dpi) {
+        this.dpi = dpi;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    public Binary getDpi_pdf() {
+        return dpi_pdf;
+    }
+
+    public void setDpi_pdf(Binary dpi_pdf) {
+        this.dpi_pdf = dpi_pdf;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
     
     
 }
