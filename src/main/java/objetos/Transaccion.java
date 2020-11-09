@@ -20,15 +20,16 @@ public class Transaccion {
     public static final String CUENTA_CODIGO_DB = "cuenta_codigo";
     
     private int codigo;
-    private String monto;
+    private double monto;
     private String tipo;
     private String hora;
     private String fecha;
-    private String cajero_codigo;
-    private String cuenta_codigo;
+    private int cajero_codigo;
+    private int cuenta_codigo;
 
     //constructor para el ingrese del archivo xml
-    public Transaccion(int codigo, String monto, String tipo, String hora, String fecha, String cajero_codigo, String cuenta_codigo) {
+
+    public Transaccion(int codigo, double monto, String tipo, String hora, String fecha, int cajero_codigo, int cuenta_codigo) {
         this.codigo = codigo;
         this.monto = monto;
         this.tipo = tipo;
@@ -38,9 +39,7 @@ public class Transaccion {
         this.cuenta_codigo = cuenta_codigo;
     }
 
-    
-    
-    public Transaccion(String monto, String tipo, String hora, String fecha, String cajero_codigo, String cuenta_codigo) {
+    public Transaccion(double monto, String tipo, String hora, String fecha, int cajero_codigo, int cuenta_codigo) {
         this.monto = monto;
         this.tipo = tipo;
         this.hora = hora;
@@ -48,6 +47,31 @@ public class Transaccion {
         this.cajero_codigo = cajero_codigo;
         this.cuenta_codigo = cuenta_codigo;
     }
+
+    public double getMonto() {
+        return monto;
+    }
+
+    public void setMonto(double monto) {
+        this.monto = monto;
+    }
+
+    public int getCajero_codigo() {
+        return cajero_codigo;
+    }
+
+    public void setCajero_codigo(int cajero_codigo) {
+        this.cajero_codigo = cajero_codigo;
+    }
+
+    public int getCuenta_codigo() {
+        return cuenta_codigo;
+    }
+
+    public void setCuenta_codigo(int cuenta_codigo) {
+        this.cuenta_codigo = cuenta_codigo;
+    }
+   
 
     public int getCodigo() {
         return codigo;
@@ -55,14 +79,6 @@ public class Transaccion {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public String getMonto() {
-        return monto;
-    }
-
-    public void setMonto(String monto) {
-        this.monto = monto;
     }
 
     public String getTipo() {
@@ -87,22 +103,6 @@ public class Transaccion {
 
     public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public String getCajero_codigo() {
-        return cajero_codigo;
-    }
-
-    public void setCajero_codigo(String cajero_codigo) {
-        this.cajero_codigo = cajero_codigo;
-    }
-
-    public String getCuenta_codigo() {
-        return cuenta_codigo;
-    }
-
-    public void setCuenta_codigo(String cuenta_codigo) {
-        this.cuenta_codigo = cuenta_codigo;
     }
     
     

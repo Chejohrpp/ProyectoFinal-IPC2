@@ -5,6 +5,7 @@
  */
 package objetos;
 
+import java.io.InputStream;
 import javax.websocket.Decoder.Binary;
 
 /**
@@ -28,12 +29,12 @@ public class Cliente {
     private String dpi;
     private String direccion;
     private String genero;
-    private Binary dpi_pdf;
+    private InputStream dpi_pdf;
     private String password;
     
     //constructor para el ingrese del archivo xml
 
-    public Cliente(int codigo, String nombre, String birth, String dpi, String direccion, String genero, Binary dpi_pdf, String password) {
+    public Cliente(int codigo, String nombre, String birth, String dpi, String direccion, String genero, InputStream dpi_pdf, String password) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.birth = birth;
@@ -44,7 +45,7 @@ public class Cliente {
         this.password = password;
     }
 
-    public Cliente(String nombre, String birth, String dpi, String direccion, String genero, Binary dpi_pdf, String password) {
+    public Cliente(String nombre, String birth, String dpi, String direccion, String genero, InputStream dpi_pdf, String password) {
         this.nombre = nombre;
         this.birth = birth;
         this.dpi = dpi;
@@ -53,6 +54,16 @@ public class Cliente {
         this.dpi_pdf = dpi_pdf;
         this.password = password;
     }
+
+    public InputStream getDpi_pdf() {
+        return dpi_pdf;
+    }
+
+    public void setDpi_pdf(InputStream dpi_pdf) {
+        this.dpi_pdf = dpi_pdf;
+    }
+
+    
 
     public int getCodigo() {
         return codigo;
@@ -102,13 +113,6 @@ public class Cliente {
         this.genero = genero;
     }
 
-    public Binary getDpi_pdf() {
-        return dpi_pdf;
-    }
-
-    public void setDpi_pdf(Binary dpi_pdf) {
-        this.dpi_pdf = dpi_pdf;
-    }
 
     public String getPassword() {
         return password;

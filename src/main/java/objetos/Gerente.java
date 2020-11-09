@@ -18,6 +18,7 @@ public class Gerente {
     public static final String DIRECCION_DB= "direccion";
     public static final String GENERO_DB = "genero";
     public static final String PASSWORD_DB = "password";
+    public static final String LLAVE = "sacoElCurso";
     
     private int codigo;
     private String nombre;
