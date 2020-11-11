@@ -16,6 +16,7 @@ public class Transaccion {
     public static final String TIPO_DB = "tipo";
     public static final String HORA_DB = "hora";
     public static final String FECHA_DB= "fecha";
+    public static final String NUEVO_SALDO_DB= "nuevo_saldo";    
     public static final String CAJERO_CODIGO_DB = "cajero_codigo";
     public static final String CUENTA_CODIGO_DB = "cuenta_codigo";
     
@@ -24,6 +25,7 @@ public class Transaccion {
     private String tipo;
     private String hora;
     private String fecha;
+    private double nuevoSaldo;
     private int cajero_codigo;
     private int cuenta_codigo;
 
@@ -48,6 +50,26 @@ public class Transaccion {
         this.cuenta_codigo = cuenta_codigo;
     }
 
+    public Transaccion(int codigo, double monto, String tipo, String hora, String fecha, double nuevoSaldo, int cajero_codigo, int cuenta_codigo) {
+        this.codigo = codigo;
+        this.monto = monto;
+        this.tipo = tipo;
+        this.hora = hora;
+        this.fecha = fecha;
+        this.nuevoSaldo = nuevoSaldo;
+        this.cajero_codigo = cajero_codigo;
+        this.cuenta_codigo = cuenta_codigo;
+    }
+
+    public double getNuevoSaldo() {
+        return nuevoSaldo;
+    }
+
+    public void setNuevoSaldo(double nuevoSaldo) {
+        this.nuevoSaldo = nuevoSaldo;
+    }
+    
+    
     public double getMonto() {
         return monto;
     }
