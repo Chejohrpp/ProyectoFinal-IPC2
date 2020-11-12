@@ -7,6 +7,7 @@ package ConnectionDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import objetos.Cliente;
 import objetos.Gerente;
@@ -17,8 +18,11 @@ import objetos.Gerente;
  */
 public class ClienteModelo {
     
-    private static String ATRIBUTOS = Cliente.CODIGO_DB+","+Cliente.NOMBRE_DB+","+Cliente.BIRTH_DB+","+Cliente.DPI_DB +"," + Cliente.DIRECCION_DB+","+Cliente.GENERO_DB+","+Cliente.DPI_PDF_DB+","+ Cliente.PASSWORD_DB+",";
-    private static String ADD_CLIENTE = "INSERT INTO " + Cliente.CLIENTE_DB_NAME + "( "+ ATRIBUTOS +" ) VALUES(?,?,?,?,?,?,?,AES_ENCRYPT(?,?)";
+    private static String ATRIBUTOS = Cliente.CODIGO_DB+","+Cliente.NOMBRE_DB+","+Cliente.BIRTH_DB+","+Cliente.DPI_DB +"," + Cliente.DIRECCION_DB+","+Cliente.GENERO_DB+","+Cliente.DPI_PDF_DB+","+ Cliente.PASSWORD_DB;
+    private static String ATRIBUTOS_SIN_PASSWORD =  Cliente.CODIGO_DB+","+Cliente.NOMBRE_DB+","+Cliente.BIRTH_DB+","+Cliente.DPI_DB +"," + Cliente.DIRECCION_DB+","+Cliente.GENERO_DB+","+Cliente.DPI_PDF_DB;
+    private static String ADD_CLIENTE = "INSERT INTO " + Cliente.CLIENTE_DB_NAME + "( "+ ATRIBUTOS +" ) VALUES(?,?,?,?,?,?,?,AES_ENCRYPT(?,?))";
+    private static String CLIENTES = "SELECT " + ATRIBUTOS_SIN_PASSWORD + ", cast(aes_decrypt("+Cliente.PASSWORD_DB +",?) as char) " + Cliente.PASSWORD_DB + " FROM " + Cliente.CLIENTE_DB_NAME;
+    private static String OBTENER_CLIENTE = CLIENTES + " WHERE " + Cliente.CODIGO_DB + " = ? LIMIT 1";
     
     private Connection connection = ConnectionDB.getInstance();
     
@@ -38,6 +42,35 @@ public class ClienteModelo {
         preSt.setString(8, cliente.getPassword());              
         preSt.setString(9, Gerente.LLAVE);
         preSt.executeUpdate(); 
+    }
+    
+    public Cliente verificarLogin(int codigo, String pass) throws SQLException {
+        Cliente cliente = obtenerCliente(codigo);
+        if (cliente != null && cliente.getPassword().equals(pass)) {
+            return cliente;
+        }
+        return null;        
+    }
+
+    private Cliente obtenerCliente(int codigo) throws SQLException {
+         PreparedStatement preSt = connection.prepareStatement(OBTENER_CLIENTE);
+        preSt.setString(1, Gerente.LLAVE);
+        preSt.setInt(2, codigo);        
+        ResultSet result = preSt.executeQuery();
+        Cliente cliente = null;
+        while(result.next()){
+            cliente = new Cliente(
+                    result.getInt(Cliente.CODIGO_DB),
+                    result.getString(Cliente.NOMBRE_DB),
+                    result.getString(Cliente.BIRTH_DB),
+                    result.getString(Cliente.DPI_DB),
+                    result.getString(Cliente.DIRECCION_DB),
+                    result.getString(Cliente.GENERO_DB),
+                    result.getBinaryStream(Cliente.DPI_PDF_DB),
+                    result.getString(Cliente.PASSWORD_DB)           
+            );
+        }
+        return cliente;
     }
     
 }

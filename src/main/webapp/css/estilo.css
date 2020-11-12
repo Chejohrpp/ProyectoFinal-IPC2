@@ -1,0 +1,145 @@
+@font-face{
+    font-family: "bill";
+    src: url(../font/Billabong.ttf);
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;  
+}
+.datos{
+    width: 390px;
+    box-sizing: border-box;
+    margin-left: 37%;
+    padding: 5px 20px;
+    
+}
+
+.informacion{
+    width: 1100px;
+    box-sizing: border-box;
+    margin-left: 20%;
+    padding: 5px 20px;
+    text-align: center;
+    
+}
+.informacionPeque{
+    width: 600px;
+    box-sizing: border-box;
+    margin-left: 35%;
+    padding: 20px 20px;
+    text-align: center;
+}
+.caja {
+    width: 390px;
+    height: 500px;
+    background: white;
+    color: black;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    box-sizing: border-box;
+    padding: 1px 40px;
+}
+.cabecera{
+    width: 125px;
+    margin-left: 91.7%;
+    box-sizing: border-box;
+}
+.inicio{
+    width: 390px;
+    box-sizing: border-box;
+    margin-left: 37%;
+}
+.cabecera h2,h3{
+    text-align: right;
+}
+.cabecera h2{
+    font-size: 18px;
+}
+.cabecera h3{
+    font-size: 15px;
+}
+
+h1{ 
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: "bill";
+    font-size: 75px;
+    font-weight: 350;
+}
+h2,h3{
+    text-align: right;
+}
+h2{
+    font-size: 18px;
+}
+h3{
+    font-size: 15px;
+}
+.datos h2, .datos h3{
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: "bill";
+    font-size: 45px;
+    font-weight: 200;
+}
+.inicio h2{
+    text-align: center;
+    letter-spacing: 1px;
+    font-family: "bill";
+    font-size: 45px;
+    font-weight: 200;
+}
+.datos h3{
+    font-size: 30px;
+}
+.informacionPeque h2{
+    text-align: center;
+    letter-spacing: 1px;
+    font-weight: 200;
+}
+label{
+    margin: 2px;
+    padding: 2px;
+    font-weight: bold;
+    display:block;
+}
+input[type="text"],input[type="password"], input[type="date"],  input[type="number"],input[type="time"], select, input[type="file"]{
+    width: 100%;
+    margin-bottom: 20px;
+    border-bottom: 1px solid    ;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    border-left: 1px solid;
+    border-color: gray;
+    border-radius: 4px;
+    background: whitesmoke;
+    outline: none;
+    height: 40px;
+    font-size: 20px;
+}
+input[type="submit"],button{
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    outline: none;
+    background: #0095f6;
+    border-radius: 4px;
+    color: white;
+    font-size: 20px;
+    padding: 8px 5px;
+    cursor:pointer;
+}
+.cabecera  input[type="submit"]{
+    font-size: 15px;
+}
+a{
+    text-decoration: none;
+    color:black;
+}
+.informacion a{
+    color: #0095f6;
+}
+

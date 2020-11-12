@@ -20,7 +20,7 @@ public class Cliente {
     public static final String DPI_DB = "dpi";
     public static final String DIRECCION_DB= "direccion";
     public static final String GENERO_DB = "genero";
-    public static final String DPI_PDF_DB = "dpi-pdf";
+    public static final String DPI_PDF_DB = "dpi_pdf";
     public static final String PASSWORD_DB = "password";
     
     private int codigo;
