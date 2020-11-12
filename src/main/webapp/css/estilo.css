@@ -92,6 +92,12 @@ h3{
     font-size: 45px;
     font-weight: 200;
 }
+.inicio h3{
+    ttext-align: center;
+    letter-spacing: 1px;
+    font-size: 30px;
+    
+}
 .datos h3{
     font-size: 30px;
 }

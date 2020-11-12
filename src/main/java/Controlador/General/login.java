@@ -26,7 +26,8 @@ public class login extends HttpServlet {
     
    ClienteModelo clienteModelo = new ClienteModelo();
    GerenteModelo gerenteModelo = new GerenteModelo();
-   CajeroModelo cajeroModelo = new CajeroModelo();    
+   CajeroModelo cajeroModelo = new CajeroModelo(); 
+   CuentaModelo cuentaModelo = new CuentaModelo();
     
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,10 +56,12 @@ public class login extends HttpServlet {
             
             
              if (tipo.equals("cliente") && cliente !=  null) {
-                 request.getSession().setAttribute("id", codigo);
-                 request.getSession().setAttribute("nombre", cliente.getNombre());
                  
-                 response.sendRedirect(request.getContextPath() + "/cliente/inicio.jsp");
+                 request.getSession().setAttribute("id", String.valueOf(codigo));
+                 request.getSession().setAttribute("nombre", cliente.getNombre());                 
+                 request.setAttribute("codigo", codigo);                
+                 
+                 response.sendRedirect(request.getContextPath() + "/cliente/escogerCuenta.jsp");
              }else if (tipo.equals("gerente")&& gerente != null) {
                  request.getSession().setAttribute("id", codigo);
                  request.getSession().setAttribute("nombre", gerente.getNombre());
