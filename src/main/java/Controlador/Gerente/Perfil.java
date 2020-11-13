@@ -5,6 +5,7 @@
  */
 package Controlador.Gerente;
 
+import ConnectionDB.CambiosModelo;
 import ConnectionDB.GerenteModelo;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import objetos.Cambios;
 import objetos.Gerente;
 
 /**
@@ -22,6 +24,7 @@ import objetos.Gerente;
 @WebServlet("/perfil")
 public class Perfil extends HttpServlet {
     GerenteModelo gerenteModelo = new GerenteModelo();
+    CambiosModelo cambiosModelo = new CambiosModelo(); 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{
@@ -57,10 +60,15 @@ public class Perfil extends HttpServlet {
              Gerente gerente = new Gerente(Integer.parseInt(codigo),nombre,turno,dpi,direccion,genero,pass);
              gerenteModelo.ModGerente(gerente);
              request.getSession().setAttribute("nombre", nombre);
+             
+             Cambios cambios = new Cambios("GERENTE",Integer.parseInt(codigo),nombre,null,Integer.parseInt(codigo));
+             cambiosModelo.addCambios(cambios);
+             
              response.sendRedirect("gerente/inicio.jsp");
          }catch(NumberFormatException | SQLException e){
-             request.setAttribute("success", 1);
-             request.getRequestDispatcher("perfil").forward(request, response);
+             System.out.println("error " + e.getMessage());
+//             request.setAttribute("success", 1);
+//             response.sendRedirect("perfil");
          }
      }
 }

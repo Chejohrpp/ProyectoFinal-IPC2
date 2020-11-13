@@ -49,7 +49,7 @@
             <form action="../crearGerente" method="GET">                
                 <input type="submit" value="Crear un nuevo gerente">
             </form>
-            <form action=../"buscarCliente" method="GET">                
+            <form action="../buscarCliente" method="GET">                
                 <input type="submit" value="Actualizar informacion del cliente">
             </form>
             <form action="../buscarCajero" method="GET">                

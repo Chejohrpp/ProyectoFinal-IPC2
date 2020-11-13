@@ -35,13 +35,13 @@
                    <form action="crearCuenta" method="POST">
                     <%--Codigo --%>
                     <label for="codigo">Codigo del cliente</label>
-                     <input type="number" name="codigo" placeholder="codigo del cliente"> 
+                     <input type="number" name="codigo" required="required" placeholder="codigo del cliente"> 
                     <%--DPI --%>                   
                     <label for="dpi">DPI</label>
-                     <input type="number" name="dpi" placeholder="DPI"> 
+                     <input type="number" name="dpi" required="required" placeholder="DPI"> 
                      <%--Monto--%>                   
                     <label for="monto">Monto</label>
-                     <input type="number" step="any" min="0" name="monto" placeholder="Monto">
+                     <input type="number" step="any" min="0" required="required" name="monto" placeholder="Monto">
                      <%--fecha de creacion--%> 
                      <label for="usuario">fecha de creacion</label>
                     <input type="date" name="fecha" value="<%= LocalDate.now()%>"> 

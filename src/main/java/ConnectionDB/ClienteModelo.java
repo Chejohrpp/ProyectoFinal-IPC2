@@ -29,7 +29,7 @@ public class ClienteModelo {
     private static String CLIENTES = "SELECT " + ATRIBUTOS_SIN_PASSWORD + ", cast(aes_decrypt("+Cliente.PASSWORD_DB +",?) as char) " + Cliente.PASSWORD_DB + " FROM " + Cliente.CLIENTE_DB_NAME;
     private static String OBTENER_CLIENTE = CLIENTES + " WHERE " + Cliente.CODIGO_DB + " = ? LIMIT 1";
     private static String MOD_CLIENTE = "UPDATE " + Cliente.CLIENTE_DB_NAME +" SET " + Cliente.NOMBRE_DB+"=?,"+Cliente.BIRTH_DB+"=?,"+Cliente.DPI_DB +"=?," + Cliente.DIRECCION_DB+"=?,"+
-            Cliente.GENERO_DB+"=?,"+Cliente.DPI_PDF_DB+"=?,"+ Cliente.PASSWORD_DB+"=AES_ENCRYPT(?,?) WHERE "+Cliente.CODIGO_DB+"=?";
+            Cliente.GENERO_DB+"=?,"+ Cliente.PASSWORD_DB+"=AES_ENCRYPT(?,?) WHERE "+Cliente.CODIGO_DB+"=?";
     
     private Connection connection = ConnectionDB.getInstance();
     
@@ -76,10 +76,9 @@ public class ClienteModelo {
         preSt.setString(3, cliente.getDpi());
         preSt.setString(4, cliente.getDireccion());
         preSt.setString(5, cliente.getGenero());
-        preSt.setBinaryStream(6, cliente.getDpi_pdf());
-        preSt.setString(7, cliente.getPassword());              
-        preSt.setString(8, Gerente.LLAVE);
-        preSt.setInt(9, cliente.getCodigo());
+        preSt.setString(6, cliente.getPassword());              
+        preSt.setString(7, Gerente.LLAVE);
+        preSt.setInt(8, cliente.getCodigo());
         preSt.executeUpdate(); 
     }
     

@@ -162,11 +162,11 @@ public class CajeroModelo {
         int minute = now.get(Calendar.MINUTE); 
 
         date = parseDate(hour + ":" + minute); 
-        System.out.println(date.toString());
+        //System.out.println(date.toString());
         dateCompareOne = parseDate(compareStringOne); 
-        System.out.println(dateCompareOne);
+        //System.out.println(dateCompareOne);
         dateCompareTwo = parseDate(compareStringTwo); 
-        System.out.println(dateCompareTwo);
+        //System.out.println(dateCompareTwo);
         if (dateCompareOne.before(date) && dateCompareTwo.after(date)) { 
             return true;
         } 
