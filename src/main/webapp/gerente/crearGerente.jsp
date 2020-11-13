@@ -16,7 +16,7 @@
     </head>
     <body>
         <c:if test="${verificar == 0}">
-            <h1>No esta en su horario de trabajo, no puede crear una cuenta</h1>            
+            <h1>No esta en su horario de trabajo, no puede crear un Gerente</h1>            
         </c:if>
             
         <c:if test="${verificar == 1}">

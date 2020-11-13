@@ -72,8 +72,7 @@ public class TransaccionModelo {
         preSt.executeUpdate(); 
     }
     public List<Transaccion> todoasTransacciones() throws SQLException {
-         PreparedStatement preSt = connection.prepareStatement(TRANSACCIONES);
-        preSt.setString(1, Gerente.LLAVE);        
+        PreparedStatement preSt = connection.prepareStatement(TRANSACCIONES); 
         ResultSet result = preSt.executeQuery();
         List<Transaccion> transacciones = new LinkedList<>();
         while(result.next()){
