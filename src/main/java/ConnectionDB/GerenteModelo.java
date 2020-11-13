@@ -10,8 +10,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import objetos.Cajero;
 import objetos.Gerente;
 
@@ -98,7 +102,7 @@ public class GerenteModelo {
         return null;        
     }
 
-    private Gerente obtenerGerente(int codigo) throws SQLException {
+    public Gerente obtenerGerente(int codigo) throws SQLException {
          PreparedStatement preSt = connection.prepareStatement(OBTENER_GERENTE);
         preSt.setString(1, Gerente.LLAVE);
         preSt.setInt(2, codigo);        
@@ -134,5 +138,54 @@ public class GerenteModelo {
             ));
         }
         return gerentes;
+    }
+    
+    //usamos para verificar si esta en el horario definido
+    private static final String inputFormat = "HH:mm"; 
+    private Date date; 
+    private Date dateCompareOne; 
+    private Date dateCompareTwo; 
+    SimpleDateFormat inputParser = new SimpleDateFormat(inputFormat, Locale.US); 
+    // turno matutino (6:00 a 14:30 hrs)
+    //vespertino (13:00 a 22:00 hrs).
+    public boolean verificarRequisitos(int codigo) throws SQLException{
+        Gerente gerente = obtenerGerente(codigo);
+        String turno  = gerente.getTurno();        
+        String compareStringOne = "13:00"; 
+        String compareStringTwo = "22:00";        
+        
+        if (turno.equalsIgnoreCase("MATUTINO")) {
+            compareStringOne = "6:00"; 
+            compareStringTwo = "14:30";
+            return compareDates(compareStringOne,compareStringTwo);
+        } 
+        
+        return compareDates(compareStringOne,compareStringTwo);
+    }
+    //camparamos la hora
+    private boolean compareDates(String compareStringOne, String compareStringTwo){ 
+        Calendar now = Calendar.getInstance(); 
+
+        int hour = now.get(Calendar.HOUR_OF_DAY); 
+        int minute = now.get(Calendar.MINUTE); 
+
+        date = parseDate(hour + ":" + minute); 
+        System.out.println(date.toString());
+        dateCompareOne = parseDate(compareStringOne); 
+        System.out.println(dateCompareOne);
+        dateCompareTwo = parseDate(compareStringTwo); 
+        System.out.println(dateCompareTwo);
+        if (dateCompareOne.before(date) && dateCompareTwo.after(date)) { 
+            return true;
+        } 
+            return false;
+    } 
+    //transformamos la hora en formato simpleDateFormat
+    private Date parseDate(String date) { 
+        try { 
+            return inputParser.parse(date); 
+        } catch (java.text.ParseException e) { 
+            return new Date(0); 
+        } 
     }
 }

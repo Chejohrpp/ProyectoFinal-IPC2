@@ -34,28 +34,28 @@
         <a href="inicio.jsp"><h1>Billeton</h1></a>
         <%--Sus Acciones --%>
         <div class="inicio">
-            <form action="perfil" method="GET">
+            <form action="../perfil" method="GET">
                 <input type="submit" value="Actualizar mi Informacion">
             </form>
-            <form action="crearCuenta" method="GET">                
+            <form action="../crearCuenta" method="GET">                
                 <input type="submit" value="Crear una nueva Cuenta">
             </form>
-            <form action="crearCliente" method="GET">                
+            <form action="../crearCliente" method="GET">                
                 <input type="submit" value="Crear un nuevo cliente">
             </form>
-            <form action="crearCajero" method="GET">                
+            <form action="../crearCajero" method="GET">                
                 <input type="submit" value="Crear un nuevo cajero">
             </form>
-            <form action="crearGerente" method="GET">                
+            <form action="../crearGerente" method="GET">                
                 <input type="submit" value="Crear un nuevo gerente">
             </form>
-            <form action="actualizarCliente" method="GET">                
+            <form action=../"buscarCliente" method="GET">                
                 <input type="submit" value="Actualizar informacion del cliente">
             </form>
-            <form action="actualizarCajero" method="GET">                
+            <form action="../buscarCajero" method="GET">                
                 <input type="submit" value="Actualizar informacion del cajero">
             </form>            
-            <form action="listados" method="GET">                
+            <form action="listados.jsp" method="GET">                
                 <input type="submit" value="Listados">
             </form>
             <form action="reportesGerente.jsp">
