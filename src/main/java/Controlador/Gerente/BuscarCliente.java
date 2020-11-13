@@ -56,12 +56,13 @@ public class BuscarCliente extends HttpServlet{
                     request.setAttribute("nombre", cliente.getNombre());
                     request.setAttribute("pass", cliente.getPassword());
                     request.setAttribute("fecha", cliente.getBirth());
+                    request.setAttribute("verificar", 1);
                     request.getRequestDispatcher("/gerente/actualizarCliente.jsp").forward(request, response);
                 }else{
                      error(request,response,"el dpi no coincide con el codigo");
                 }
             }else{
-                 error(request,response,"El codigo del cliente no existe, cree un cajero");
+                 error(request,response,"El codigo del cliente no existe");
             }
             
         }catch(IOException | NumberFormatException | SQLException | ServletException e){

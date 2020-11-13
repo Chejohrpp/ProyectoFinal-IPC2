@@ -24,7 +24,7 @@ import objetos.Gerente;
  *
  * @author sergi
  */
-@WebServlet("/actuializarCliente")
+@WebServlet("/actualizarCliente")
 public class ActualizarCliente extends HttpServlet{
     GerenteModelo gerenteModelo = new GerenteModelo();
     ClienteModelo clienteModelo = new ClienteModelo();
@@ -36,6 +36,7 @@ public class ActualizarCliente extends HttpServlet{
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
          try{
             String codigoGerente = (String) request.getSession().getAttribute("id");
+            
             String codigo = (String) request.getParameter("codigo");
             String nombre = (String) request.getParameter("nombre");
             String fecha = (String) request.getParameter("fecha");
@@ -54,7 +55,7 @@ public class ActualizarCliente extends HttpServlet{
              response.sendRedirect("gerente/inicio.jsp");
              
          }catch(NumberFormatException | SQLException e){
-             System.out.println("error" + e.getMessage());
+             System.out.println("error " + e.getMessage());
 //             request.setAttribute("success", 1);
 //             response.sendRedirect("actualizarCliente");
          }

@@ -40,7 +40,7 @@ public class ActualizarCajero extends HttpServlet{
              Cajero cajero = new Cajero(Integer.parseInt(codigo),nombre,turno,dpi,direccion,genero,pass);
              cajeroModelo.ModCajero(cajero);
              
-             Cambios cambios = new Cambios("CLIENTE",Integer.parseInt(codigo),nombre,null,Integer.parseInt(codigoGerente));
+             Cambios cambios = new Cambios("CAJERO",Integer.parseInt(codigo),nombre,null,Integer.parseInt(codigoGerente));
              cambiosModelo.addCambios(cambios);
              
              response.sendRedirect("gerente/inicio.jsp");

@@ -53,6 +53,7 @@ public class BuscarCajero extends HttpServlet{
                     request.setAttribute("nombre", cajero.getNombre());
                     request.setAttribute("pass", cajero.getPassword());
                     request.setAttribute("turno", cajero.getTurno());
+                    request.setAttribute("verificar", 1);
                     request.getRequestDispatcher("/gerente/actualizarCajero.jsp").forward(request, response);
                 }else{
                      error(request,response,"el dpi no coincide con el codigo");
