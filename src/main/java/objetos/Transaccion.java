@@ -50,6 +50,17 @@ public class Transaccion {
         this.cuenta_codigo = cuenta_codigo;
     }
 
+    public Transaccion(double monto, String tipo, String hora, String fecha, double nuevoSaldo, int cajero_codigo, int cuenta_codigo) {
+        this.monto = monto;
+        this.tipo = tipo;
+        this.hora = hora;
+        this.fecha = fecha;
+        this.nuevoSaldo = nuevoSaldo;
+        this.cajero_codigo = cajero_codigo;
+        this.cuenta_codigo = cuenta_codigo;
+    }
+    
+
     public Transaccion(int codigo, double monto, String tipo, String hora, String fecha, double nuevoSaldo, int cajero_codigo, int cuenta_codigo) {
         this.codigo = codigo;
         this.monto = monto;

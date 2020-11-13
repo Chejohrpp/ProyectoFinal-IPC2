@@ -25,6 +25,7 @@ import objetos.Gerente;
     private static String CUENTAS = "SELECT " + ATRIBUTOS + " FROM " + Cuenta.CUENTA_DB_NAME;
     private static String OBTENER_CUENTA = CUENTAS + " WHERE " + Cuenta.CODIGO_DB + " = ? LIMIT 1";
     private static String OBTENER_CUENTAS_CLIENTE = CUENTAS + " WHERE " + Cuenta.CLIENTE_CODIGO_DB + " =?";
+    private static String CAMBIAR_MONTO = "UPDATE " + Cuenta.CUENTA_DB_NAME + " SET " + Cuenta.CREDITO_DB + " = ? WHERE " +Cuenta.CODIGO_DB +" = ?"; 
     
     private Connection connection = ConnectionDB.getInstance();
     
@@ -63,4 +64,12 @@ import objetos.Gerente;
         }
         return cuenta;        
     }
+    
+     public void cambiarMonto(Cuenta cuenta) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(CAMBIAR_MONTO);         
+        preSt.setDouble(1, cuenta.getCredito());
+        preSt.setInt(2, cuenta.getCodigo());        
+        preSt.executeUpdate(); 
+    }
+    
 }

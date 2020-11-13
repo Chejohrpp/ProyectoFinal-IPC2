@@ -62,15 +62,18 @@ public class login extends HttpServlet {
                  request.setAttribute("codigo", codigo);                
                  
                  response.sendRedirect(request.getContextPath() + "/cliente/escogerCuenta.jsp");
+                 
              }else if (tipo.equals("gerente")&& gerente != null) {
-                 request.getSession().setAttribute("id", codigo);
+                 request.getSession().setAttribute("id", String.valueOf(codigo));
                  request.getSession().setAttribute("nombre", gerente.getNombre());
                  
                  response.sendRedirect(request.getContextPath() + "/gerente/inicio.jsp");
+                 
              }else if (tipo.equals("cajero") && cajero != null) {
-                 request.getSession().setAttribute("id", codigo); 
+                 request.getSession().setAttribute("id", String.valueOf(codigo)); 
                  request.getSession().setAttribute("nombre", cajero.getNombre());                  
                  response.sendRedirect(request.getContextPath() + "/cajero/inicio.jsp");
+                 
              }else{
                  request.setAttribute("success", 0);
                  request.getRequestDispatcher("/login.jsp").forward(request, response);

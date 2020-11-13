@@ -16,8 +16,7 @@
         <title>Billeton</title>
         <link rel="styleSheet" href="../css/estilo.css">
     </head>
-    <body>
-        
+    <body>        
         <%
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
             if (session.getAttribute("id") == null) {
@@ -36,10 +35,10 @@
         <a href="inicio.jsp"><h1>Billeton</h1></a>
         <%--Sus Acciones --%>
         <div class="inicio">
-            <form action="depositar" method="GET">
+            <form action="../depositar" method="POST">
                 <input type="submit" value="Depositar">
             </form>
-            <form action="retirar" method="GET">                
+            <form action="../retirar" method="POST">                
                 <input type="submit" value="Retirar">
             </form>
             <form action="reportesCajero.jsp">

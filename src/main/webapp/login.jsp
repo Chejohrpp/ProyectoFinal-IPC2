@@ -11,21 +11,14 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Billeton login</title>
-        <link rel="styleSheet" href="css/estilo.css">
-        <style>
-            #error {
-                color: red;
-            }
-        </style>
+        <link rel="styleSheet" href="css/estilo.css">        
     </head>
     <body>
         <div class="caja">
-            <h1>Billeton</h1> 
-            
+            <h1>Billeton</h1>            
             <c:if test="${success == 0}">
-            <label id="error">Usuario o Contraseña Incorrecto</label>            
-            </c:if> 
-            
+            <label id="error" style="color:red;text-align: center">Usuario o Contraseña Incorrecto</label>            
+            </c:if>             
             <form action="login" method="POST">
                 <%--Nombre de usuario--%>
                 <label for="usuario">Codigo</label>

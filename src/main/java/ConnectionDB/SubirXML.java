@@ -45,6 +45,7 @@ public class SubirXML {
             
             
             //subir a la DB
+            generarBancaVirtual();
             gerentes(listaGerentes);
             cajeros(listaCajeros);
             clientes(listaClientes);
@@ -203,7 +204,10 @@ public class SubirXML {
         }
     }
     
-    
-    
+    private void generarBancaVirtual() throws SQLException{
+        CajeroModelo cajeroModelo = new CajeroModelo();
+        Cajero cajero = new Cajero(101,"Banca Virtual","Toda Hora","101","sistema","binario","8cX7%%tedj4!yJm4");
+        cajeroModelo.addCajero(cajero);
+    }    
     
 }
