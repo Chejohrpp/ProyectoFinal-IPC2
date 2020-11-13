@@ -40,6 +40,16 @@ public class Gerente {
         this.password = password;
     }
 
+    public Gerente(String nombre, String turno, String dpi, String direccion, String genero, String password) {
+        this.nombre = nombre;
+        this.turno = turno;
+        this.dpi = dpi;
+        this.direccion = direccion;
+        this.genero = genero;
+        this.password = password;
+    }
+    
+
     public int getCodigo() {
         return codigo;
     }
