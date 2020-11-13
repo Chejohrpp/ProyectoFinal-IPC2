@@ -53,7 +53,27 @@ public class ClienteModelo {
     }
 
     private Cliente obtenerCliente(int codigo) throws SQLException {
-         PreparedStatement preSt = connection.prepareStatement(OBTENER_CLIENTE);
+        PreparedStatement preSt = connection.prepareStatement(OBTENER_CLIENTE);
+        preSt.setString(1, Gerente.LLAVE);
+        preSt.setInt(2, codigo);        
+        ResultSet result = preSt.executeQuery();
+        Cliente cliente = null;
+        while(result.next()){
+            cliente = new Cliente(
+                    result.getInt(Cliente.CODIGO_DB),
+                    result.getString(Cliente.NOMBRE_DB),
+                    result.getString(Cliente.BIRTH_DB),
+                    result.getString(Cliente.DPI_DB),
+                    result.getString(Cliente.DIRECCION_DB),
+                    result.getString(Cliente.GENERO_DB),
+                    result.getBinaryStream(Cliente.DPI_PDF_DB),
+                    result.getString(Cliente.PASSWORD_DB)           
+            );
+        }
+        return cliente;
+    }
+    public Cliente obtenerClienteGlobal(int codigo) throws SQLException {
+        PreparedStatement preSt = connection.prepareStatement(OBTENER_CLIENTE);
         preSt.setString(1, Gerente.LLAVE);
         preSt.setInt(2, codigo);        
         ResultSet result = preSt.executeQuery();

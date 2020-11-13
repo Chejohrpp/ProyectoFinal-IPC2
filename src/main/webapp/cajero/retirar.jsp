@@ -24,10 +24,10 @@
                <div class="datos">
                    
                    <c:if test="${success == 0}">
-                       <label id="error" style="color:red;text-align: center">Cuenta no encontrada</label>            
+                       <label id="error" style="color:red;text-align: center">${mensajeError}</label>            
                     </c:if>             
                     <c:if test="${success == 1}">
-                       <label id="bien" style="color:green; text-align: center">Deposito realizado correctamente</label>            
+                       <label id="bien" style="color:green; text-align: center">Retiro realizado correctamente</label>            
                     </c:if>  
                        
                    <form action="retirarDB" method="POST">
