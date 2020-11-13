@@ -8,6 +8,7 @@ package ConnectionDB;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Calendar;
 import objetos.Cambios;
 
 /**
@@ -20,9 +21,9 @@ public class CambiosModelo {
     
     private Connection connection = ConnectionDB.getInstance();
     
-    public void addTransaccion( Cambios cambios) throws SQLException{
+    public void addCambios( Cambios cambios) throws SQLException{
+        cambios.setFecha(getFechaActual());
         PreparedStatement preSt = connection.prepareStatement(ADD_CAMBIOS);
-
         preSt.setInt(1, cambios.getCodigo_tipo());
         preSt.setString(2, cambios.getTipo());
         preSt.setString(3, cambios.getNombre());
@@ -31,4 +32,12 @@ public class CambiosModelo {
         preSt.executeUpdate(); 
     }   
     
+    
+    private String getFechaActual(){
+        Calendar now = Calendar.getInstance(); 
+        int year = now.get(Calendar.YEAR);
+        int month = now.get(Calendar.MONTH);
+        int day = now.get(Calendar.DAY_OF_MONTH);
+        return year + "-" + month +"-" + day;
+    }
 }

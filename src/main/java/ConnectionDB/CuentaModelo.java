@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import objetos.Cajero;
@@ -21,7 +22,9 @@ import objetos.Gerente;
  */
  public class CuentaModelo {
     private static String ATRIBUTOS = Cuenta.CODIGO_DB +"," +Cuenta.CREDITO_DB +","+ Cuenta.CREACION_DB + ","+  Cuenta.CLIENTE_CODIGO_DB;
+    private static String ATRIBUTOS_SIN_CODIGO = Cuenta.CREDITO_DB +","+ Cuenta.CREACION_DB + ","+  Cuenta.CLIENTE_CODIGO_DB;
     private static String ADD_CUENTA = "INSERT INTO " + Cuenta.CUENTA_DB_NAME +"( " + ATRIBUTOS +" ) VALUES(?,?,?,?)";
+    private static String ADD_CUENTA_SIN_CODIGO = "INSERT INTO " + Cuenta.CUENTA_DB_NAME +"( " + ATRIBUTOS_SIN_CODIGO +" ) VALUES(?,?,?)";
     private static String CUENTAS = "SELECT " + ATRIBUTOS + " FROM " + Cuenta.CUENTA_DB_NAME;
     private static String OBTENER_CUENTA = CUENTAS + " WHERE " + Cuenta.CODIGO_DB + " = ? LIMIT 1";
     private static String OBTENER_CUENTAS_CLIENTE = CUENTAS + " WHERE " + Cuenta.CLIENTE_CODIGO_DB + " =?";
@@ -38,6 +41,21 @@ import objetos.Gerente;
         preSt.setInt(4, cuenta.getCliente_codigo());
         preSt.executeUpdate(); 
     }
+    public long addCuentaSinCodigo(Cuenta cuenta) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(ADD_CUENTA_SIN_CODIGO,Statement.RETURN_GENERATED_KEYS);
+
+        preSt.setDouble(1, cuenta.getCredito());
+        preSt.setString(2, cuenta.getCreacion());
+        preSt.setInt(3, cuenta.getCliente_codigo());
+        preSt.executeUpdate();
+        
+        ResultSet result = preSt.getGeneratedKeys();
+        if (result.first()) {
+            return result.getLong(1);
+        }
+        return -1;         
+    }
+    
     public List<Cuenta> cuentasCliente(int codigo) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(OBTENER_CUENTAS_CLIENTE);
         preSt.setInt(1, codigo);

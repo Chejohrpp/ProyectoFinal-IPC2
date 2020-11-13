@@ -7,8 +7,11 @@ package ConnectionDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 import objetos.Gerente;
 import objetos.Transaccion;
 
@@ -24,7 +27,7 @@ public class TransaccionModelo {
     private static String ADD_TRANSACCION = "INSERT INTO " + Transaccion.TRANSACCION_DB_NAME +"( " + ATRIBUTOS +" ) VALUES(?,?,?,?,?,?,?)";
     private static String ADD_TRANSACCION_CON_NUEVOSALDO = "INSERT INTO " + Transaccion.TRANSACCION_DB_NAME +"( " + ATRIBUTOS_CON_NUEVOSALDO +" ) VALUES(?,?,?,?,?,?,?,?)";
     private static String ADD_TRANSACCION_CON_NUEVOSALDO_SIN_CODIGO = "INSERT INTO " + Transaccion.TRANSACCION_DB_NAME +"( " + ATRIBUTOS_CON_NUEVOSALDO_SIN_CODIGO +" ) VALUES(?,?,?,?,?,?,?)";
-    
+    private static String TRANSACCIONES = "SELECT " + ATRIBUTOS_CON_NUEVOSALDO  +" FROM  "+Transaccion.TRANSACCION_DB_NAME;
     
     private Connection connection = ConnectionDB.getInstance();
     
@@ -67,6 +70,25 @@ public class TransaccionModelo {
         preSt.setInt(6, transaccion.getCajero_codigo());
         preSt.setInt(7, transaccion.getCuenta_codigo());              
         preSt.executeUpdate(); 
+    }
+    public List<Transaccion> todoasTransacciones() throws SQLException {
+         PreparedStatement preSt = connection.prepareStatement(TRANSACCIONES);
+        preSt.setString(1, Gerente.LLAVE);        
+        ResultSet result = preSt.executeQuery();
+        List<Transaccion> transacciones = new LinkedList<>();
+        while(result.next()){
+            transacciones.add( new Transaccion(
+                    result.getInt(Transaccion.CODIGO_DB),
+                    result.getDouble(Transaccion.MONTO_DB),
+                    result.getString(Transaccion.TIPO_DB),
+                    result.getString(Transaccion.HORA_DB),
+                    result.getString(Transaccion.FECHA_DB),
+                    result.getDouble(Transaccion.NUEVO_SALDO_DB),
+                    result.getInt(Transaccion.CAJERO_CODIGO_DB),
+                    result.getInt(Transaccion.CUENTA_CODIGO_DB)           
+            ));
+        }
+        return transacciones;
     }
     
     
