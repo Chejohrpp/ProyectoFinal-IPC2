@@ -115,7 +115,7 @@ public class TransaccionModelo {
     private String getFechaActual(){
         Calendar now = Calendar.getInstance(); 
         int year = now.get(Calendar.YEAR);
-        int month = now.get(Calendar.MONTH);
+        int month = now.get(Calendar.MONTH) + 1;
         int day = now.get(Calendar.DAY_OF_MONTH);
         return year + "-" + month +"-" + day;
     }
