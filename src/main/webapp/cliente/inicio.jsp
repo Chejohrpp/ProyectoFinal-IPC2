@@ -31,6 +31,9 @@
             <form action="../bandejaEntrada">
                 <input type="submit" value="Mensajes">
             </form>
+            <form action="escogerCuenta.jsp">
+                <input type="submit" value="Cambiar cuenta">
+            </form>
             <form action="../logout">
                 <input type="submit" value="Cerrar sesion">
             </form>
@@ -42,15 +45,15 @@
         <h3>No. de cuenta: <%= session.getAttribute("noCuenta") %> </h3>
         <h3>Credito que posee: <%= session.getAttribute("credito") %> </h3>  
         
-            <form action="#" method="GET">
+            <form action="../buscarCuenta" method="GET">
                 <input type="submit" value="Realizar una Transaccion">
             </form>
-            <form action="asociarCuenta" method="GET">                
+            <form action="../asociarCuenta" method="GET">                
                 <input type="submit" value="Asociar una cuenta">
             </form>
             <form action="reportesCliente.jsp">
                 <input type="submit" value="Reportes">
             </form>             
-        </div>        
+        </div>
     </body>
 </html>

@@ -17,6 +17,7 @@ public class CuentasAsociadas {
     public static final String NO_INTENTOS_DB = "no_intentos";
     public static final String CUENTA_CODIGO_DB = "cuenta_codigo";
     public static final String CLIENTE_CODIGO_DB= "cliente_codigo";
+    public static final String KING_CUENTA_DB= "king_cuenta";
     
     
     private int codigo;
@@ -25,6 +26,7 @@ public class CuentasAsociadas {
     private int no_intentos;
     private int cuenta_codigo;
     private int cliente_codigo;
+    private int king_cuenta;
 
     public CuentasAsociadas(Boolean estado, Boolean estado_enviar, int no_intentos, int cuenta_codigo, int cliente_codigo) {
         this.estado = estado;
@@ -32,7 +34,34 @@ public class CuentasAsociadas {
         this.no_intentos = no_intentos;
         this.cuenta_codigo = cuenta_codigo;
         this.cliente_codigo = cliente_codigo;
-    }  
+    }
+    public CuentasAsociadas(Boolean estado, Boolean estado_enviar, int no_intentos, int cuenta_codigo, int cliente_codigo, int king_cuenta) {
+        this.estado = estado;
+        this.estado_enviar = estado_enviar;
+        this.no_intentos = no_intentos;
+        this.cuenta_codigo = cuenta_codigo;
+        this.cliente_codigo = cliente_codigo;
+        this.king_cuenta = king_cuenta;
+    }
+
+    public CuentasAsociadas(int codigo, Boolean estado, Boolean estado_enviar, int no_intentos, int cuenta_codigo, int cliente_codigo, int king_cuenta) {
+        this.codigo = codigo;
+        this.estado = estado;
+        this.estado_enviar = estado_enviar;
+        this.no_intentos = no_intentos;
+        this.cuenta_codigo = cuenta_codigo;
+        this.cliente_codigo = cliente_codigo;
+        this.king_cuenta = king_cuenta;
+    }
+    
+    public int getKing_cuenta() {
+        return king_cuenta;
+    }
+
+    public void setKing_cuenta(int king_cuenta) {
+        this.king_cuenta = king_cuenta;
+    }
+    
 
     public int getCodigo() {
         return codigo;

@@ -28,6 +28,7 @@ import objetos.Gerente;
     private static String CUENTAS = "SELECT " + ATRIBUTOS + " FROM " + Cuenta.CUENTA_DB_NAME;
     private static String OBTENER_CUENTA = CUENTAS + " WHERE " + Cuenta.CODIGO_DB + " = ? LIMIT 1";
     private static String OBTENER_CUENTAS_CLIENTE = CUENTAS + " WHERE " + Cuenta.CLIENTE_CODIGO_DB + " =?";
+    private static String OBTENER_CUENTAS_CLIENTE_SIN_CUENTA_ACTUAL = CUENTAS + " WHERE " + Cuenta.CLIENTE_CODIGO_DB + " =? AND " + Cuenta.CODIGO_DB + " != ?";
     private static String CAMBIAR_MONTO = "UPDATE " + Cuenta.CUENTA_DB_NAME + " SET " + Cuenta.CREDITO_DB + " = ? WHERE " +Cuenta.CODIGO_DB +" = ?"; 
     
     private Connection connection = ConnectionDB.getInstance();
@@ -59,6 +60,20 @@ import objetos.Gerente;
     public List<Cuenta> cuentasCliente(int codigo) throws SQLException{
         PreparedStatement preSt = connection.prepareStatement(OBTENER_CUENTAS_CLIENTE);
         preSt.setInt(1, codigo);
+        List<Cuenta> cuentas = new LinkedList<>();
+        ResultSet result = preSt.executeQuery();
+        while(result.next()){
+            cuentas.add(new Cuenta(result.getInt(Cuenta.CODIGO_DB), 
+                    result.getDouble(Cuenta.CREDITO_DB),
+                    result.getString(Cuenta.CREACION_DB),
+                    result.getInt(Cuenta.CLIENTE_CODIGO_DB)));
+        }
+        return cuentas;        
+    }
+    public List<Cuenta> cuentasClienteSinCuentaActual(int codigo,int noCuenta) throws SQLException{
+        PreparedStatement preSt = connection.prepareStatement(OBTENER_CUENTAS_CLIENTE_SIN_CUENTA_ACTUAL);
+        preSt.setInt(1, codigo);
+        preSt.setInt(2, noCuenta);
         List<Cuenta> cuentas = new LinkedList<>();
         ResultSet result = preSt.executeQuery();
         while(result.next()){
