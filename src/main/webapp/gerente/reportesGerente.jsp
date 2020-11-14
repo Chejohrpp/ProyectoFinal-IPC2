@@ -21,12 +21,33 @@
         <div class="informacion"> 
             <%-- --%>
             <form action="../parametros" method="POST">
-                <input type="submit" value="" name=""> 
+                <input type="submit" value="Historial de cambios realizados en la información de una entidad en específico" name="report1"> 
             </form>
              <%-- --%>
             <form action="../parametros" method="POST">
-                <input type="submit" value="" name=""> 
+                <input type="submit" value="Clientes con transacciones monetarias mayores a un límite establecido" name="report2"> 
             </form>
+            <%-- --%>
+            <form action="../parametros" method="POST">
+                <input type="submit" value="Clientes con transacciones monetarias sumadas " name="report3"> 
+            </form>
+            <%-- --%>
+            <form action="../report4" method="POST">
+                <input type="submit" value="Los 10 clientes con más dinero en sus cuentas" name="report4"> 
+            </form>
+            <%-- --%>
+            <form action="../" method="POST">
+                <input type="submit" value="Clientes que no han realizado transacciones dentro de un intervalo de tiempo" name="report5"> 
+            </form>
+            <%-- --%>
+            <form action="../parametros" method="POST">
+                <input type="submit" value="Historial de transacciones por cliente" name="report6"> 
+            </form>
+            <%-- --%>
+            <form action="../report7" method="POST">
+                <input type="submit" value="Cajero que más transacciones ha realizado en un intervalo de tiempo" name="report7"> 
+            </form>
+             <%--Boton de regresar --%>
             <form action="inicio.jsp">
                   <input type="submit" value="Regresar">
             </form> 
