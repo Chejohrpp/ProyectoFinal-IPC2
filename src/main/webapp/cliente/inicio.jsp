@@ -28,7 +28,7 @@
         <div class="cabecera">    
             <h2>Nombre: <%= session.getAttribute("nombre")%></h2>
             <h3>Codigo: <%= session.getAttribute("id") %></h3>               
-            <form action="../bandejaEntrada">
+            <form action="../solicitudes">
                 <input type="submit" value="Mensajes">
             </form>
             <form action="escogerCuenta.jsp">

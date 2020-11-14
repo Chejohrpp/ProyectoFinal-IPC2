@@ -90,7 +90,7 @@ public class BuscarCuenta extends HttpServlet{
              noCuentas.add(cuenta.getCodigo());
          }
          for (CuentasAsociadas cuenta : cuentass) {
-             noCuentas.add(cuenta.getCodigo());
+             noCuentas.add(cuenta.getCuenta_codigo());
          }
          request.setAttribute("noCuentas", noCuentas);
         }
