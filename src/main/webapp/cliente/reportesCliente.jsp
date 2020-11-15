@@ -20,15 +20,15 @@
         </div>
         <div class="informacion"> 
             <%--Las últimas 15 transacciones más grandes realizadas en el último año, por cuenta--%>
-            <form action="../parametros" method="POST">
+            <form action="parametroReport1.jsp">
                 <input type="submit" value="Las últimas 15 transacciones más grandes realizadas en el último año, por cuenta" name="resport1"> 
             </form>
              <%----%>
-            <form action="../parametros" method="POST">
+            <form action="parametroReport2.jsp">
                 <input type="submit" value="Listado de todas las transacciones realizadas dentro de un intervalo de tiempo" name="report2"> 
             </form>
             <%----%>
-            <form action="../parametros" method="POST">
+            <form action="parametrosReport3.jsp">
                 <input type="submit" value="La cuenta con más dinero y sus transacciones con intervalo de tiempo" name="report3"> 
             </form>
             <%----%>
@@ -36,7 +36,7 @@
                 <input type="submit" value="Asociaciones Realizadas" name="report4"> 
             </form>
             <%----%>
-            <form action="../AsociacionRecibidas" method="GET">
+            <form action="../asociacionesRecibidas" method="GET">
                 <input type="submit" value="Asociaciones Recibidas" name="report5"> 
             </form>
             <%--Regresar--%>
