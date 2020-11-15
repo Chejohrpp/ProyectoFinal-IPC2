@@ -1,6 +1,6 @@
 <%-- 
-    Document   : parametrosReport3
-    Created on : 15/11/2020, 12:56:43 AM
+    Document   : ParametrosHistorialCambios
+    Created on : 15/11/2020, 11:58:35 AM
     Author     : sergi
 --%>
 
@@ -16,19 +16,19 @@
         <link rel="styleSheet" href="../css/estilo.css">
     </head>
     <body>   
-               <h1>Coloca un intervalo de Fechas</h1>
+               <h1>Elige una entidad</h1>
                <div class="datos">               
-                   <form action="../cuentaMasDineroTransaccionesIntervalo" method="GET">
-                     <%--fecha de inicio--%> 
-                     <label for="usuario">fecha de Inicio</label>
-                    <input type="date" name="fechaInicio" value="<%= LocalDate.now()%>" required="required"> 
-                    <%--fecha de Fin--%> 
-                     <label for="usuario">fecha Final</label>
-                    <input type="date" name="fechaFinal" value="<%= LocalDate.now()%>" required="required" max="<%= LocalDate.now()%>"> 
+                   <form action="../historialCambios" method="GET">
+                     <%--Tipo--%> 
+                     <select name="tipo">
+                         <option>CAJERO</option>
+                         <option>CLIENTE</option>
+                         <option>GERENTE</option>
+                     </select>
                      <%--boton--%>    
                      <input type="submit" value="Aceptar">
                     </form>
-                     <form action="reportesCliente.jsp">
+                     <form action="reportesGerente.jsp">
                         <input type="submit" value="Regresar">
                     </form> 
                </div>              

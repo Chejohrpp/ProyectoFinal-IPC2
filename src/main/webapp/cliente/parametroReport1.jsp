@@ -45,7 +45,7 @@
                      <%--boton--%>    
                      <input type="submit" value="Aceptar">
                     </form>
-                     <form action="inicio.jsp">
+                     <form action="reportesCliente.jsp">
                         <input type="submit" value="Regresar">
                     </form> 
                </div>              

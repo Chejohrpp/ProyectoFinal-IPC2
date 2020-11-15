@@ -1,6 +1,6 @@
 <%-- 
-    Document   : parametroReport2
-    Created on : 15/11/2020, 01:06:08 AM
+    Document   : ParametroNombreCliente
+    Created on : 15/11/2020, 12:11:37 PM
     Author     : sergi
 --%>
 
@@ -16,19 +16,17 @@
         <link rel="styleSheet" href="../css/estilo.css">
     </head>
     <body>   
-               <h1>Coloca un intervalo de Fechas</h1>
-               <div class="datos">               
-                   <form action="../todasTransaccionesIntervalo" method="GET">
-                     <%--fecha de inicio--%> 
-                     <label for="usuario">fecha de Inicio</label>
-                    <input type="date" name="fechaInicio" value="<%= LocalDate.now()%>" required="required"> 
-                    <%--fecha de Fin--%> 
-                     <label for="usuario">fecha Final</label>
-                    <input type="date" name="fechaFinal" value="<%= LocalDate.now()%>" required="required" max="<%= LocalDate.now()%>"> 
+               <h1>Coloca un Nombre del cliente</h1>               
+               <div class="datos">    
+                   <h2>Nota: se tiene que colocar como esta Registrado(No importa mayusculas/minusculas)</h2>
+                   <form action="../historialTransaccionBusquedaCliente" method="GET">
+                     <%--nombre del Cliente--%> 
+                     <label for="usuario">Nombre del Cliente</label>
+                    <input type="text" name="nombreCliente" required="required" placeholder="Nombre del Cliente"> 
                      <%--boton--%>    
                      <input type="submit" value="Aceptar">
                     </form>
-                     <form action="reportesCliente.jsp">
+                     <form action="reportesGerente.jsp">
                         <input type="submit" value="Regresar">
                     </form> 
                </div>              

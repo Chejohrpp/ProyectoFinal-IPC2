@@ -1,6 +1,6 @@
 <%-- 
-    Document   : parametrosReport3
-    Created on : 15/11/2020, 12:56:43 AM
+    Document   : ParametosCajeroMasTrans
+    Created on : 15/11/2020, 12:11:51 PM
     Author     : sergi
 --%>
 
@@ -18,7 +18,7 @@
     <body>   
                <h1>Coloca un intervalo de Fechas</h1>
                <div class="datos">               
-                   <form action="../cuentaMasDineroTransaccionesIntervalo" method="GET">
+                   <form action="../cajeroTransaccionesIntervalo" method="GET">
                      <%--fecha de inicio--%> 
                      <label for="usuario">fecha de Inicio</label>
                     <input type="date" name="fechaInicio" value="<%= LocalDate.now()%>" required="required"> 
@@ -28,7 +28,7 @@
                      <%--boton--%>    
                      <input type="submit" value="Aceptar">
                     </form>
-                     <form action="reportesCliente.jsp">
+                     <form action="reportesGerente.jsp">
                         <input type="submit" value="Regresar">
                     </form> 
                </div>              
