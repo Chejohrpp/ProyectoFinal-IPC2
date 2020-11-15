@@ -7,6 +7,8 @@ package Controlador.XML;
 
 import ConnectionDB.SubirXML;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -24,17 +26,26 @@ import javax.servlet.http.Part;
     maxFileSize=1024*1024*5, maxRequestSize=1024*1024*5*5)
 public class LeerXML extends HttpServlet{
     
-    SubirXML subirXML = new SubirXML();
     public static final String BASE_PATH = "C:/tmp";
         
+    @Override
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Part filePart = request.getPart("dataFile");
         String fileName = getFileName(filePart);
         String path = BASE_PATH + "/" + fileName;
         System.out.println(path);
         filePart.write(path);
+        List<String> errores = new LinkedList<>();
+        SubirXML subirXML = new SubirXML();
         subirXML.subirDB(BASE_PATH, fileName);
-        
+        errores = subirXML.getErrores();
+        if (errores == null || errores.size() == 0) {
+            request.setAttribute("success", 0);
+        }else{
+            request.setAttribute("success", 1);
+            request.setAttribute("errores", errores);
+        }
+        request.getRequestDispatcher("verificarSubida.jsp").forward(request, response);
     }
 
     //sirve para conocer el nombre del archivo que se ingreso

@@ -8,6 +8,8 @@ package ConnectionDB;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import objetos.*;
@@ -22,6 +24,7 @@ import org.w3c.dom.NodeList;
  */
 public class SubirXML {
 
+    List<String> errores = new LinkedList<>();
     
     public SubirXML(){
         
@@ -53,6 +56,7 @@ public class SubirXML {
             
         } catch (Exception ex) {
             System.out.println("error: " + ex.getMessage());
+            errores.add("Error de lectura de archivo (revise si n tiene un caracter & ): "+ ex.getMessage());
             
         }
     }
@@ -83,6 +87,8 @@ public class SubirXML {
             
             }catch(Exception e){
                 System.out.println("Error gerente" + e.getMessage());
+                errores.add("Error de Gerentes: "+e.getMessage());
+                
             }
         }
     }
@@ -113,6 +119,7 @@ public class SubirXML {
             
             }catch(Exception e){
                 System.out.println("Error cajero" + e.getMessage());
+                errores.add("Error de Cajero: "+e.getMessage());
             }
         }
     }
@@ -170,6 +177,7 @@ public class SubirXML {
                     }
             }catch(Exception e){
                 System.out.println("error cliente: " + e.getMessage());
+                errores.add("Error de Cliente: "+e.getMessage());
             }            
        }
     }
@@ -199,7 +207,8 @@ public class SubirXML {
                 }
             
             }catch(Exception e){
-                System.out.println("Error cajero" + e.getMessage());
+                System.out.println("Error Transacciones" + e.getMessage());
+               errores.add("Error de Transacciones: "+e.getMessage());
             }
         }
     }
@@ -209,5 +218,9 @@ public class SubirXML {
         Cajero cajero = new Cajero(101,"Banca Virtual","Toda Hora","101","sistema","binario","8cX7%%tedj4!yJm4");
         cajeroModelo.addCajero(cajero);
     }    
+
+    public List<String> getErrores() {
+        return errores;
+    }
     
 }

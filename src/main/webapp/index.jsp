@@ -19,7 +19,7 @@
             <h2>Busque el archivo XML</h2>
             <form method="POST" enctype="multipart/form-data" action="leerXML">
                 <label for="dataFile">Seleccione archivo:</label>
-                <input type="file" name="dataFile" accept=".xml"/>
+                <input type="file" name="dataFile" accept=".xml" required="required" />
                 <br>
                 <br>
                 <button type="submit" >aceptar</button>
