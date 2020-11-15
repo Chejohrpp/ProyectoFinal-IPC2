@@ -32,11 +32,11 @@
                 <input type="submit" value="La cuenta con más dinero y sus transacciones con intervalo de tiempo" name="report3"> 
             </form>
             <%----%>
-            <form action="../report4" method="POST">
+            <form action="../AsociacionRealizadas" method="GET">
                 <input type="submit" value="Asociaciones Realizadas" name="report4"> 
             </form>
             <%----%>
-            <form action="../report5" method="POST">
+            <form action="../AsociacionRecibidas" method="GET">
                 <input type="submit" value="Asociaciones Recibidas" name="report5"> 
             </form>
             <%--Regresar--%>
