@@ -20,11 +20,11 @@
         </div>
         <div class="informacion"> 
             <%--Listado de depósitos y retiros realizados durante su turno de manera ordenada, mostrando el total existente en caja (depósitos - retiros). --%>
-            <form action="../parametros" method="POST">
+            <form action="../transaccionesHoyCajero" method="GET">
                 <input type="submit" value="Listado de depósitos y retiros realizados durante su turno" name="resport1"> 
             </form>
              <%--Listado de las transacciones realizadas por día en un intervalo de tiempo, mostrando el balance final. --%>
-            <form action="../parametros" method="POST">
+            <form action="parametro.jsp">
                 <input type="submit" value="Listado de las transacciones realizadas por día en un intervalo de tiempo" name="report2"> 
             </form>
             <form action="inicio.jsp">
