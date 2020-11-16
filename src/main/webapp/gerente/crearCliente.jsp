@@ -21,7 +21,7 @@
         </c:if>
             
         <c:if test="${verificar == 1}">
-               <h1>Crear Cuenta</h1>
+               <h1>Crear Cliente</h1>
                <div class="datos">                   
                    <c:if test="${success == 0}">
                        <label id="error" style="color:red;text-align: center">${mensajeError}</label>            

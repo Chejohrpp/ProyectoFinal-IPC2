@@ -42,7 +42,7 @@ public class RetirarDB extends HttpServlet {
             
              if (cuenta.getCliente_codigo() == cliente.getCodigo()) {
                  if (cliente.getDpi().equals(dpi)) {
-                     if (cuenta.getCredito() >= Integer.parseInt(monto)) {
+                     if (cuenta.getCredito() >= Double.parseDouble(monto)) {
                         cuenta.setCredito(cuenta.getCredito() - Double.parseDouble(monto));
                         cuentaModelo.cambiarMonto(cuenta);
                         transaccionModelo.crearTransaccionDebito(Double.parseDouble(monto), Integer.parseInt(codigoCajero), cuenta.getCredito(), Integer.parseInt(noCuenta));
@@ -60,6 +60,7 @@ public class RetirarDB extends HttpServlet {
              }
             
          }catch(IOException | NumberFormatException | SQLException | ServletException e){
+            // System.out.println(e.getMessage());
              error(request,response,"algo salio mal al momento de retirar");
          }
             
